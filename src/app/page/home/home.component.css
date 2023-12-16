@@ -1,0 +1,25 @@
+.custom-card {
+    background-color: #e0e0e0;
+    border: 1px solid #333;
+    width: 400px;
+    /* margin: 100px; */
+    height: auto;
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los mat-card se envuelvan a la siguiente línea si no hay suficiente espacio horizontal */    margin-bottom: 10px; 
+  }
+  mat-card-header, mat-card-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content{
+    margin: 150px;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Para que los cards se envuelvan si no hay suficiente espacio */
+
+}
+
+  

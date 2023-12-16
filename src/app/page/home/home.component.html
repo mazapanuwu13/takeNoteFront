@@ -1,0 +1,68 @@
+<app-tool-bar></app-tool-bar>
+
+<!-- AGREGAR NOTA -->
+<div class="content">
+  <mat-card class="mat-mdc-card mdc-card" style="height: auto; width: 400px; margin: auto;">
+    <mat-card-header class="mat-mdc-card-header">
+      <div class="mat-mdc-card-header-text"></div>
+      <div style="width: 100%; text-align: center;">
+        <mat-card-title class="mat-mdc-card-title">Agregar una nueva nota</mat-card-title>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content class="mat-mdc-card-content card-content" style="text-align: center; margin-top: 30px;">
+      <div style="margin: 0 20px;">
+        <!-- Titulo -->
+        <mat-form-field style="width: 100%;">
+          <mat-label>Título</mat-label>
+          <input matInput placeholder="Ej. Nota" value="Nota" [(ngModel)]="titleNewNote">
+        </mat-form-field>
+        <!-- Descripción -->
+        <mat-form-field style="width: 100%;">
+          <mat-label>Deja un comentario</mat-label>
+          <textarea matInput placeholder="Ej. Me hace sentir..." [(ngModel)]="descNewNote"></textarea>
+        </mat-form-field>
+        <button (click)="createNote()" style="width: 100%;" mat-raised-button color="primary">Crear Nota</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- VER NOTA -->
+<div  class="card-container">
+    <ng-container *ngFor="let note of notes; let i = index;">
+    <mat-card class="custom-card">
+      <mat-card-header>
+        <div *ngIf="!notes[i].is_processed">
+          <mat-card-title>{{note.title}}</mat-card-title>
+          <mat-card-subtitle>{{note.description}}</mat-card-subtitle>
+        </div>
+
+        <!-- Editar inputs -->
+        <div *ngIf="notes[i].is_processed">
+          <!-- Título -->
+          <mat-form-field style="width: 100%;">
+            <mat-label>Título</mat-label>
+            <input matInput placeholder="Ej. Nota" value="Nota" [(ngModel)]="note.editTitle">
+          </mat-form-field>
+          <!-- Descripción -->
+          <mat-form-field style="width: 100%;">
+            <mat-label>Deja un comentario</mat-label>
+            <textarea matInput placeholder="Ej. Me hace sentir..." [(ngModel)]="note.editDescription"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card-header>
+
+      <mat-card-actions>
+        <button *ngIf="notes[i].is_processed" (click)="updateNote(note.nota_id, i)" mat-button>Confirmar</button>
+        <button *ngIf="!notes[i].is_processed" (click)="viewEditNote(i)" mat-button>Editar</button>
+        <button *ngIf="notes[i].is_processed" (click)="viewEditNote(i)" mat-button>Cancelar</button>
+        <button *ngIf="!notes[i].is_processed" (click)="deleteNote(note.nota_id)" mat-button>Eliminar</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
+
+
+<!-- Mensaje para lista vacía -->
+

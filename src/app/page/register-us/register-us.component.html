@@ -1,0 +1,63 @@
+<div class="content">
+    <mat-card class="mat-mdc-card mdc-card" style="height: auto; width: 400px; margin: auto;">
+      <mat-card-header class="mat-mdc-card-header">
+        <div class="mat-mdc-card-header-text"></div>
+        <div style="width: 100%; text-align: center;">
+          <mat-card-title class="mat-mdc-card-title">TakeNote</mat-card-title>
+          <mat-card-subtitle class="mat-mdc-card-subtitle">The Best Note-Taking App</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+  
+      <mat-card-content class="mat-mdc-card-content card-content" style="text-align: center; margin-top: 20px;">
+        <div style="margin-left: 20px; margin-right: 20px;">
+  
+          <!-- Name -->
+          <mat-form-field hintLabel="Max 10 characters" style="width: 100%;">
+            <mat-label>Your Name</mat-label>
+            <input matInput #input maxlength="10" [(ngModel)]="name" placeholder="e.g., John">
+            <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+          </mat-form-field>
+          <!-- Name -->
+  
+          <!-- Email -->
+          <mat-form-field style="width: 100%; margin-top: 10px;">
+            <mat-label>Email Address</mat-label>
+            <input matInput placeholder="e.g., john@example.com" [formControl]="email" [(ngModel)]="emailLog" name="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <!-- Email -->
+  
+          <!-- Confirm Email -->
+          <mat-form-field style="width: 100%; margin-top: 10px;">
+            <mat-label>Confirm Email Address</mat-label>
+            <input matInput placeholder="e.g., john@example.com" [formControl]="email" [(ngModel)]="confimEmail" name="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <!-- Confirm Email -->
+  
+          <!-- Password -->
+          <mat-form-field style="width: 100%; margin-top: 10px;">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <!-- Password -->
+  
+          <!-- Confirm Password -->
+          <mat-form-field style="width: 100%; margin-top: 10px;">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="confimPassword">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <!-- Confirm Password -->
+  
+          <button (click)="register()" style="width: 100%; margin-top: 20px;" mat-raised-button color="primary">Register</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

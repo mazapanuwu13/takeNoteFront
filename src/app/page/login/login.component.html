@@ -1,0 +1,42 @@
+<div class="content">
+  <mat-card class="mat-mdc-card mdc-card" style="height: 600px; width: 400px; margin: auto;">
+    <mat-card-header class="mat-mdc-card-header">
+      <div class="mat-mdc-card-header-text"></div>
+
+      <div style="width: 100%; text-align: center;">
+        <mat-card-title class="mat-mdc-card-title">TakeNote</mat-card-title>
+        <mat-card-subtitle class="mat-mdc-card-subtitle">The best note-taking app</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content class="mat-mdc-card-content card-content" style="text-align: center; margin-top: 50px;">
+      <div style="margin: 0 20px;">
+
+        <!-- Email -->
+        <mat-form-field style="width: 100%;">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email"  [(ngModel)]="emailLog" name="email"  required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- Email -->
+
+        <!-- Password -->
+        <mat-form-field style="width: 100%;">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <!-- Password -->
+
+        <button (click)="login(emailLog, password)" style="width: 100%;" mat-raised-button color="primary">Login</button>
+        <div style="margin-top: 10px;">
+          <a href="register">Register</a>
+        </div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
