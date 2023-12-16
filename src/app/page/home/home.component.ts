@@ -66,8 +66,10 @@ export class HomeComponent {
         window.alert(responseData.message);
       }
       
-    }).catch(()=>{
-      console.log('a');
+    }).catch((e)=>{
+      console.log(e.error.error)
+      window.alert(e.error.error);
+      console.log('a'); 
       this.notes[i].is_processed = !this.notes[i].is_processed;
     })
 
